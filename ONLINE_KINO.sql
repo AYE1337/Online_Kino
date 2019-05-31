@@ -11,15 +11,14 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(20) NOT NULL,
   `password` VARCHAR(64) NOT NULL,
+  `status` INT(11) NOT NULL,
   `global_rank` INT(11) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
-  `profile` TEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL,
   `ip` VARCHAR(39) NOT NULL,
   `time` BIGINT(20) NOT NULL,
   `name_dedupe` VARCHAR(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name` (`name` ASC),
-  UNIQUE INDEX `name_dedupe` (`name_dedupe` ASC))
+  UNIQUE INDEX `name` (`name` ASC))
 ENGINE = InnoDB
 AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8;
@@ -80,11 +79,12 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`global_bans` (
   `ip` VARCHAR(39) NOT NULL,
   `reason` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL,
   `users_id` INT(11) NOT NULL,
-  `users_id1` INT(11) NOT NULL,
+  `ban_time` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`ban_id`),
+  UNIQUE KEY (`users_id`),
   INDEX `fk_global_bans_users1_idx` (`users_id` ASC),
-  INDEX `fk_global_bans_users1_idx1` (`users_id1` ASC),
-  CONSTRAINT `fk_global_bans_users1`
-    FOREIGN KEY (`users_id1`)
+  CONSTRAINT `fk_global_bans_users`
+    FOREIGN KEY (`users_id`)
     REFERENCES `onlinekino`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
