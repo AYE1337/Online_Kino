@@ -216,3 +216,15 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`wishlists` (
     REFERENCES `onlinekino`.`users` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS `onlinekino`.`logging` (
+`action_id` INT(11) NOT NULL,
+`performer_id` INT(11) NOT NULL,
+`time` FLOAT(20) NOT NULL,
+`action_stamp` VARCHAR(50) NOT NULL,
+PRIMARY KEY (`action_id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
