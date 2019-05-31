@@ -1,3 +1,5 @@
+use onlinekino;
+DELIMITER $$
 CREATE PROCEDURE `movie_addition` (IN mov_name VARCHAR(999), IN length INT(11), cost INT(11), providers_id INT(11))
 BEGIN
 DECLARE lastid INT(11);

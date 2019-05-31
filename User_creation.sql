@@ -1,3 +1,5 @@
+use onlinekino;
+DELIMITER $$
 CREATE PROCEDURE `user_creation` (IN us_name VARCHAR(20), IN passwd VARCHAR(64), IN email VARCHAR(255), ip VARCHAR(39))
 BEGIN
 DECLARE lastid, defstat, GR INT(11);

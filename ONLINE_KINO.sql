@@ -189,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`visits` (
   `visit_id` INT(11) NOT NULL AUTO_INCREMENT,
   `ip` VARCHAR(39) NOT NULL,
   `time` BIGINT(20) NOT NULL,
+  `time_logout` BIGINT(20) NOT NULL,
   `users_id` INT(11) NOT NULL,
   PRIMARY KEY (`visit_id`),
   INDEX `ip` (`ip` ASC),

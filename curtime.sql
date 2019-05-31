@@ -1,3 +1,5 @@
+use onlinekino;
+DELIMITER $$
 CREATE FUNCTION `curtime` ()
 RETURNS FLOAT(20)
 deterministic

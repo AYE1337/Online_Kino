@@ -1,3 +1,5 @@
+use onlinekino;
+DELIMITER $$
 CREATE PROCEDURE `payment_adding` (IN license_level INT(11), IN total FLOAT, IN users_id INT(11), IN movie_full_id INT(11))
 BEGIN
 DECLARE cur_time FLOAT(20);

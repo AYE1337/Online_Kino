@@ -1,4 +1,6 @@
-CREATE PROCEDURE `add_channel` (IN ch_name VARCHAR(30), IN ch_rank INT(11), IN users_id INT(11), private TINYINT(1), passwd VARCHAR(99))
+use onlinekino;
+DELIMITER $$
+CREATE PROCEDURE `add_channel`(IN ch_name VARCHAR(30), IN ch_rank INT(11), IN users_id INT(11), private TINYINT(1), passwd VARCHAR(99))
 BEGIN
 DECLARE lastid INT(11);
 DECLARE cur_time FLOAT(20);
