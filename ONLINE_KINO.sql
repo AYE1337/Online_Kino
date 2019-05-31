@@ -207,14 +207,14 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `onlinekino`.`wishlists` (
   `movie_id` INT(11) NOT NULL,
-  `date_added` TIMESTAMP NULL DEFAULT NULL,
+  `time_added` FLOAT(20) DEFAULT NULL,
   `users_id` INT(11) NOT NULL,
-  PRIMARY KEY (`users_id`),
-  INDEX `movie_id` (`movie_id` ASC),
-  UNIQUE INDEX `movie_id_UNIQUE` (`movie_id` ASC),
   CONSTRAINT `fk_wishlists_users1`
     FOREIGN KEY (`users_id`)
-    REFERENCES `onlinekino`.`users` (`id`))
+    REFERENCES `onlinekino`.`users` (`id`),
+  CONSTRAINT `fk_wishlists_movie_id1`
+    FOREIGN KEY (`movie_id`)
+    REFERENCES `onlinekino`.`movie_full` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
