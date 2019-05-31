@@ -31,11 +31,11 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`channels` (
   `channel_id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(30) NOT NULL,
   `time` BIGINT(20) NOT NULL,
-  `rank` INT(11) NOT NULL,
+  `ch_rank` INT(11) NOT NULL,
   `last_visited` TIMESTAMP NULL DEFAULT NULL,
   `owner_last_seen` TIMESTAMP NULL DEFAULT NULL,
   `private` TINYINT(1) NULL DEFAULT '0',
-  `password` VARCHAR(99) NOT NULL,
+  `password` VARCHAR(99),
   `users_id` INT(11) NOT NULL,
   PRIMARY KEY (`channel_id`, `users_id`),
   UNIQUE INDEX `name` (`name` ASC),
@@ -59,11 +59,9 @@ CREATE TABLE IF NOT EXISTS `onlinekino`.`channel_libraries` (
   `meta` TEXT NOT NULL,
   `channels_channel_id` INT(11) NOT NULL,
   `channels_users_id` INT(11) NOT NULL,
-  `channels_channel_id1` INT(11) NOT NULL,
-  `channels_users_id1` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_channel_libraries_channels1`
-    FOREIGN KEY (`channels_channel_id1` , `channels_users_id1`)
+  CONSTRAINT `fk_channel_libraries_channels`
+    FOREIGN KEY (`channels_channel_id` , `channels_users_id`)
     REFERENCES `onlinekino`.`channels` (`channel_id` , `users_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
